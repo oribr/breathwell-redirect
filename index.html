@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BreathWell - Redirecting...</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 500px;
+        }
+        .icon {
+            font-size: 64px;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .manual-link {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+        .manual-link a {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">🌬️</div>
+        <h1>Welcome to BreathWell!</h1>
+        <p>Redirecting you to the app...</p>
+        <div class="spinner"></div>
+        <div class="manual-link" id="manualLink" style="display: none;">
+            <p>If the app doesn't open automatically:</p>
+            <a href="#" id="appLink">Click here to open BreathWell</a>
+        </div>
+    </div>
+
+    <script>
+        // Get the full URL with query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const fragment = window.location.hash.substring(1); // Remove the #
+        const fragmentParams = new URLSearchParams(fragment);
+
+        // Get all parameters (from both query and fragment)
+        const allParams = new URLSearchParams();
+        urlParams.forEach((value, key) => allParams.append(key, value));
+        fragmentParams.forEach((value, key) => allParams.append(key, value));
+
+        // Construct the deep link URL
+        let deepLink = 'com.breathwell.breathwell://login-callback';
+        if (allParams.toString()) {
+            deepLink += '?' + allParams.toString();
+        }
+
+        // Set the manual link
+        document.getElementById('appLink').href = deepLink;
+
+        // Try to redirect immediately
+        window.location.href = deepLink;
+
+        // Show manual link after 3 seconds if redirect didn't work
+        setTimeout(() => {
+            document.getElementById('manualLink').style.display = 'block';
+        }, 3000);
+
+        // Also try opening via a hidden iframe (some platforms prefer this)
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = deepLink;
+        document.body.appendChild(iframe);
+
+        // Remove iframe after a short delay
+        setTimeout(() => {
+            document.body.removeChild(iframe);
+        }, 1000);
+    </script>
+</body>
+</html>
