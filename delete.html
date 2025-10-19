@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BreatheWell - Account Deletion Request</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 40px 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .warning strong {
+            color: #856404;
+        }
+
+        .email-button {
+            display: inline-block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            transition: transform 0.2s, opacity 0.2s;
+            margin: 20px 0;
+        }
+
+        .email-button:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        .info-box {
+            background-color: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 20px 15px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Account Deletion Request</h1>
+        <p>We're sorry to see you go. To delete your BreatheWell account and all associated data, please send us an email.</p>
+
+        <div class="warning">
+            <p><strong>⚠️ Warning:</strong> This action cannot be undone. All your data including:</p>
+            <ul>
+                <li>Breathing session history</li>
+                <li>Mood tracking data</li>
+                <li>AI-generated reports</li>
+                <li>User profile information</li>
+                <li>Subscription information</li>
+            </ul>
+            <p style="margin-top: 10px;">will be permanently deleted within 30 days.</p>
+        </div>
+
+        <a href="mailto:support@breathwell.io?subject=Account%20Deletion%20Request&body=Hello%2C%0A%0AI%20would%20like%20to%20delete%20my%20BreatheWell%20account%20and%20all%20associated%20data.%0A%0AMy%20registered%20email%20address%20is%3A%20%5BYOUR_EMAIL_HERE%5D%0A%0AReason%20for%20deletion%20(optional)%3A%20%0A%0AThank%20you." class="email-button">
+            📧 Send Deletion Request
+        </a>
+
+        <div class="info-box">
+            <h2 style="margin-top: 0; font-size: 1.1em;">What to Include in Your Email:</h2>
+            <ul>
+                <li><strong>Your registered email address</strong> (the one you use to log in)</li>
+                <li>Reason for deletion (optional but helpful)</li>
+                <li>Any feedback you'd like to share (optional)</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h2 style="margin-top: 0; font-size: 1.1em;">What Happens Next?</h2>
+            <ol style="margin-left: 20px;">
+                <li>We'll review your request within 1-2 business days</li>
+                <li>You'll receive a confirmation email</li>
+                <li>Your account and data will be permanently deleted within 30 days</li>
+                <li>You'll receive a final confirmation once deletion is complete</li>
+            </ol>
+        </div>
+
+        <p style="text-align: center; margin-top: 30px; color: #666;">
+            <strong>Need help instead?</strong><br>
+            Contact us at <a href="mailto:support@breathwell.io" style="color: #6366F1;">support@breathwell.io</a>
+        </p>
+    </div>
+</body>
+</html>
