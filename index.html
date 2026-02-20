@@ -1,113 +1,793 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BreathWell - Redirecting...</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        .container {
-            text-align: center;
-            padding: 2rem;
-            max-width: 500px;
-        }
-        .icon {
-            font-size: 64px;
-            margin-bottom: 1rem;
-        }
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid white;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .manual-link {
-            margin-top: 2rem;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-        }
-        .manual-link a {
-            color: white;
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BreatheWell — Science-backed breathing exercises, AI voice guidance, and mood tracking in one beautiful app. Start your free 7-day trial today.">
+  <meta name="keywords" content="breathing exercises, meditation, mindfulness, mood tracking, stress relief, anxiety relief, wellness, box breathing, 4-7-8, wim hof">
+  <title>BreatheWell — Breathe Better. Feel Better.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #6366F1;
+      --grad-start: #667AFF;
+      --grad-end: #60EFFF;
+      --bg-top: #F0F8FF;
+      --bg-mid: #E6F2FF;
+      --bg-bot: #D6E8F7;
+      --dark: #143752;
+      --text-muted: #5a7a95;
+      --white: #fff;
+      --card-shadow: 0 4px 24px rgba(20,55,82,0.10);
+      --card-shadow-hover: 0 12px 40px rgba(20,55,82,0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark);
+      background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-bot) 100%);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(240,248,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(99,102,241,0.12);
+      padding: 0 5%;
+    }
+    .nav-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--dark);
+      text-decoration: none;
+    }
+    .nav-logo-img { width: 36px; height: 36px; border-radius: 9px; object-fit: cover; flex-shrink: 0; }
+    .nav-badges { display: flex; gap: 10px; }
+    .badge-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .badge-link:hover { transform: translateY(-2px); box-shadow: var(--card-shadow-hover); }
+    .badge-apple {
+      background: #000;
+      color: #fff;
+    }
+    .badge-google {
+      background: var(--white);
+      color: var(--dark);
+      border: 1.5px solid #dde6f0;
+    }
+    .badge-link svg { flex-shrink: 0; }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 90px 5% 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 62px);
+      font-weight: 800;
+      line-height: 1.15;
+      background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: clamp(16px, 2.2vw, 20px);
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 36px;
+    }
+    .hero-badges { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 26px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .hero-badge:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(99,102,241,0.25); }
+    .hero-badge-apple {
+      background: #000;
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+    .hero-badge-google {
+      background: var(--white);
+      color: var(--dark);
+      border: 2px solid #dde6f0;
+      box-shadow: 0 6px 20px rgba(20,55,82,0.10);
+    }
+    .hero-badge svg { width: 22px; height: 22px; flex-shrink: 0; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 80px 5%; }
+    .section-inner { max-width: 1160px; margin: 0 auto; }
+    .section-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: rgba(99,102,241,0.10);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 560px;
+    }
+    .section-header { margin-bottom: 48px; }
+
+    /* ── CAROUSEL ── */
+    .carousel-section { background: var(--white); }
+    .carousel-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+    /* Phone shell */
+    .phone-frame {
+      position: relative;
+      width: 260px;
+      height: 556px;
+      background: #111;
+      border-radius: 44px;
+      box-shadow: 0 30px 70px rgba(20,55,82,0.30), inset 0 0 0 2px #2a2a2a;
+      flex-shrink: 0;
+    }
+    /* Inner screen area — inset to simulate bezels so screenshots sit cleanly */
+    .phone-screen {
+      position: absolute;
+      top: 10px;
+      left: 8px;
+      right: 8px;
+      bottom: 14px;
+      border-radius: 35px;
+      overflow: hidden;
+      background: #000;
+    }
+    /* Dynamic Island / notch sits on top of the screen area */
+    .phone-notch {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 88px;
+      height: 26px;
+      background: #111;
+      border-radius: 0 0 16px 16px;
+      z-index: 10;
+    }
+    .phone-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      transition: opacity 0.5s ease;
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+    }
+    .phone-screen img.active { opacity: 1; }
+
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .carousel-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid rgba(99,102,241,0.25);
+      background: var(--white);
+      color: var(--primary);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .carousel-btn:hover { background: var(--primary); color: #fff; transform: scale(1.1); }
+    .carousel-dots { display: flex; gap: 8px; }
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(99,102,241,0.25);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .carousel-dot.active { background: var(--primary); transform: scale(1.3); }
+
+    /* ── BREATHING DEMO ── */
+    .demo-section { background: linear-gradient(135deg, #F0F4FF, #E8F0FF); }
+    .demo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+    .breath-circle-wrap {
+      position: relative;
+      width: 220px;
+      height: 220px;
+    }
+    .breath-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--grad-start), var(--grad-end), var(--grad-start));
+      padding: 4px;
+      transition: transform 0.05s linear;
+    }
+    .breath-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #F0F4FF, #E8F0FF);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .breath-phase {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.04em;
+    }
+    .breath-counter {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1;
+      margin-top: 4px;
+    }
+    .breath-btn {
+      padding: 14px 36px;
+      border-radius: 50px;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(102,122,255,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .breath-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(102,122,255,0.45); }
+    .breath-description { font-size: 14px; color: var(--text-muted); text-align: center; max-width: 320px; }
+
+    /* ── FEATURES ── */
+    .features-section { background: var(--white); }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: linear-gradient(135deg, #F8FAFF, #F0F6FF);
+      border-radius: 20px;
+      padding: 32px 28px;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid rgba(99,102,241,0.08);
+    }
+    .feature-card:hover { transform: translateY(-6px); box-shadow: var(--card-shadow-hover); }
+    .feature-icon { font-size: 44px; margin-bottom: 16px; display: block; }
+    .feature-card h3 { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .feature-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+    /* ── PROTOCOLS ── */
+    .protocols-section { background: linear-gradient(135deg, var(--bg-mid), var(--bg-bot)); }
+    .protocols-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .protocol-card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 28px 24px;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .protocol-card:hover { transform: translateY(-5px); box-shadow: var(--card-shadow-hover); }
+    .protocol-icon { font-size: 38px; margin-bottom: 12px; display: block; }
+    .protocol-card h4 { font-size: 17px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+    .protocol-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
+    /* ── PRICING ── */
+    .pricing-section { background: var(--white); }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .pricing-card {
+      border-radius: 24px;
+      padding: 36px 32px;
+      box-shadow: var(--card-shadow);
+      border: 2px solid transparent;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing-card:hover { transform: translateY(-6px); box-shadow: var(--card-shadow-hover); }
+    .pricing-card.standard { background: #F8FAFF; border-color: #dde6f0; }
+    .pricing-card.featured {
+      background: linear-gradient(135deg, #667AFF, #60EFFF);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 12px 40px rgba(102,122,255,0.35);
+    }
+    .pricing-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: rgba(255,255,255,0.25);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .pricing-card.standard .pricing-badge { background: rgba(99,102,241,0.12); color: var(--primary); }
+    .pricing-period { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.75; margin-bottom: 8px; }
+    .pricing-price { font-size: 44px; font-weight: 800; line-height: 1; margin-bottom: 4px; }
+    .pricing-price span { font-size: 18px; font-weight: 600; vertical-align: super; }
+    .pricing-sub { font-size: 13px; opacity: 0.7; margin-bottom: 24px; }
+    .pricing-cta {
+      display: block;
+      padding: 14px;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .pricing-card.standard .pricing-cta {
+      background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(102,122,255,0.30);
+    }
+    .pricing-card.featured .pricing-cta { background: rgba(255,255,255,0.95); color: var(--primary); }
+    .pricing-cta:hover { transform: scale(1.03); }
+    .pricing-note { font-size: 12px; text-align: center; margin-top: 12px; opacity: 0.65; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 40px 5%;
+    }
+    footer .footer-logo { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 16px; }
+    footer .footer-links { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 18px; }
+    footer .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    footer .footer-links a:hover { color: var(--grad-end); }
+    footer .footer-copy { font-size: 13px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      section { padding: 60px 5%; }
+      .hero { padding: 60px 5% 40px; }
+      .nav-badges { display: none; }
+      .phone-frame { width: 220px; height: 471px; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 380px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="icon">🌬️</div>
-        <h1>Welcome to BreathWell!</h1>
-        <p>Redirecting you to the app...</p>
-        <div class="spinner"></div>
-        <div class="manual-link" id="manualLink" style="display: none;">
-            <p>If the app doesn't open automatically:</p>
-            <a href="#" id="appLink">Click here to open BreathWell</a>
-        </div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="assets/images/app_icon.png" class="nav-logo-img" alt="BreatheWell icon">
+      BreatheWell
+    </a>
+    <div class="nav-badges">
+      <a href="https://apps.apple.com/us/app/breatewell/id6756037980" target="_blank" rel="noopener" class="badge-link badge-apple" data-store="apple">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        App Store
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.breathwell.breathwell&pli=1" target="_blank" rel="noopener" class="badge-link badge-google" data-store="google">
+        <svg viewBox="0 0 24 24" width="16" height="16"><path fill="#4285F4" d="M3.18 23.6c.36.2.77.22 1.16.07l12.19-7.03-2.65-2.66L3.18 23.6z"/><path fill="#EA4335" d="M20.82 10.09c-.35-.76-1.07-1.3-1.93-1.3H4.34c-.86 0-1.58.54-1.93 1.3L12 15.17l8.82-5.08z"/><path fill="#34A853" d="M3.18.4C3.07.62 3 .86 3 1.13v21.74c0 .27.07.51.18.73l10.65-11.25L3.18.4z"/><path fill="#FBBC05" d="M20.82 13.91L18.69 12.7 16.05 14l2.64 2.64 2.13-1.21c.59-.34.94-.96.94-1.89z"/></svg>
+        Google Play
+      </a>
     </div>
+  </div>
+</nav>
 
-    <script>
-        // Get the full URL with query parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        const fragment = window.location.hash.substring(1); // Remove the #
-        const fragmentParams = new URLSearchParams(fragment);
+<!-- HERO -->
+<section style="padding-top:0; padding-bottom:0; background:none;">
+  <div class="hero">
+    <h1>Breathe Better.<br>Feel Better.</h1>
+    <p>Science-backed breathing exercises, AI voice guidance, and mood tracking &mdash; in one beautiful app.</p>
+    <div class="hero-badges">
+      <a href="https://apps.apple.com/us/app/breatewell/id6756037980" target="_blank" rel="noopener" class="hero-badge hero-badge-apple" data-store="apple">
+        <svg viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Download on the App Store
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.breathwell.breathwell&pli=1" target="_blank" rel="noopener" class="hero-badge hero-badge-google" data-store="google">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#4285F4" d="M3.18 23.6c.36.2.77.22 1.16.07l12.19-7.03-2.65-2.66L3.18 23.6z"/><path fill="#EA4335" d="M20.82 10.09c-.35-.76-1.07-1.3-1.93-1.3H4.34c-.86 0-1.58.54-1.93 1.3L12 15.17l8.82-5.08z"/><path fill="#34A853" d="M3.18.4C3.07.62 3 .86 3 1.13v21.74c0 .27.07.51.18.73l10.65-11.25L3.18.4z"/><path fill="#FBBC05" d="M20.82 13.91L18.69 12.7 16.05 14l2.64 2.64 2.13-1.21c.59-.34.94-.96.94-1.63-.01-.67-.36-1.29-.94-1.89z"/></svg>
+        Get it on Google Play
+      </a>
+    </div>
+  </div>
+</section>
 
-        // Get all parameters (from both query and fragment)
-        const allParams = new URLSearchParams();
-        urlParams.forEach((value, key) => allParams.append(key, value));
-        fragmentParams.forEach((value, key) => allParams.append(key, value));
+<!-- PHONE CAROUSEL -->
+<section class="carousel-section">
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center;">
+      <span class="section-label">See it in action</span>
+      <h2 class="section-title">Beautiful by design</h2>
+      <p class="section-sub" style="margin:0 auto;">A calm, intuitive interface that guides you through every breath.</p>
+    </div>
+    <div class="carousel-wrap">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen" id="carousel-screen">
+          <img src="assets/screenshots/image1.png" alt="BreatheWell screenshot 1" class="active">
+          <img src="assets/screenshots/image2.png" alt="BreatheWell screenshot 2">
+          <img src="assets/screenshots/image3.png" alt="BreatheWell screenshot 3">
+          <img src="assets/screenshots/image4.png" alt="BreatheWell screenshot 4">
+          <img src="assets/screenshots/image5.png" alt="BreatheWell screenshot 5">
+          <img src="assets/screenshots/image6.png" alt="BreatheWell screenshot 6">
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="prev-btn" aria-label="Previous screenshot">&#8249;</button>
+        <div class="carousel-dots" id="carousel-dots"></div>
+        <button class="carousel-btn" id="next-btn" aria-label="Next screenshot">&#8250;</button>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Construct the deep link URL
-        let deepLink = 'com.breathwell.breathwell://login-callback';
-        if (allParams.toString()) {
-            deepLink += '?' + allParams.toString();
+<!-- BREATHING DEMO -->
+<section class="demo-section">
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center;">
+      <span class="section-label">Interactive demo</span>
+      <h2 class="section-title">Feel it right now</h2>
+      <p class="section-sub" style="margin:0 auto;">Try a live breathing exercise — the same animation you get in the app.</p>
+    </div>
+    <div class="demo-wrap">
+      <div class="breath-circle-wrap" id="breath-wrap">
+        <div class="breath-ring" id="breath-ring">
+          <div class="breath-inner">
+            <span class="breath-phase" id="breath-phase">Ready</span>
+            <span class="breath-counter" id="breath-counter">&nbsp;</span>
+          </div>
+        </div>
+      </div>
+      <button class="breath-btn" id="breath-btn">Try it</button>
+      <p class="breath-description">Box Breathing: inhale 4s → hold 4s → exhale 4s → hold 2s. Used by Navy SEALs to manage stress.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">Features</span>
+      <h2 class="section-title">Everything you need to thrive</h2>
+      <p class="section-sub">Science-backed tools for stress, sleep, energy, and emotional wellbeing.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">🌬️</span>
+        <h3>Guided Breathing</h3>
+        <p>18+ scientifically-proven breathing protocols — from Box Breathing to Wim Hof — each with real-time visual guidance.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🎙️</span>
+        <h3>AI Voice Guidance</h3>
+        <p>Personalized voice meditation generated uniquely for each session, with calming music and soothing visualizations.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📊</span>
+        <h3>Mood Tracking</h3>
+        <p>Track your emotional states with intuitive sliders and beautiful analytics that reveal patterns over time.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🤖</span>
+        <h3>AI Insights</h3>
+        <p>Personalized wellness reports that analyze your mood trends and provide actionable, research-backed guidance.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🎵</span>
+        <h3>Soundscapes</h3>
+        <p>Solfeggio frequencies and ambient soundscapes scientifically designed to reduce stress and deepen relaxation.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🌍</span>
+        <h3>Multi-Language</h3>
+        <p>Full support for English, Hebrew, and Spanish, with automatic device-locale detection on first launch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROTOCOLS -->
+<section class="protocols-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">Breathing protocols</span>
+      <h2 class="section-title">A technique for every moment</h2>
+      <p class="section-sub">Choose from our curated library of proven breathing methods.</p>
+    </div>
+    <div class="protocols-grid">
+      <div class="protocol-card">
+        <span class="protocol-icon">📦</span>
+        <h4>Box Breathing</h4>
+        <p>Equal 4-count breathing used by Navy SEALs for peak-performance stress control and laser focus.</p>
+      </div>
+      <div class="protocol-card">
+        <span class="protocol-icon">🌙</span>
+        <h4>4-7-8 Breathing</h4>
+        <p>Dr. Andrew Weil's signature technique for deep relaxation, anxiety relief, and better sleep onset.</p>
+      </div>
+      <div class="protocol-card">
+        <span class="protocol-icon">❄️</span>
+        <h4>Wim Hof Method</h4>
+        <p>Powerful energizing breathwork that boosts energy, sharpens focus, and enhances mental resilience.</p>
+      </div>
+      <div class="protocol-card">
+        <span class="protocol-icon">😌</span>
+        <h4>Anxiety Relief</h4>
+        <p>Specialized breathing pattern clinically designed to calm the nervous system and restore inner peace.</p>
+      </div>
+      <div class="protocol-card">
+        <span class="protocol-icon">💤</span>
+        <h4>Sleep Breath</h4>
+        <p>A gentle, slowing rhythm that signals your body and mind to relax deeply into restful sleep.</p>
+      </div>
+      <div class="protocol-card">
+        <span class="protocol-icon">⚡</span>
+        <h4>Energizing Breath</h4>
+        <p>Rhythmic quick-paced breathing to boost energy, increase alertness, and fuel mental clarity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section">
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center;">
+      <span class="section-label">Pricing</span>
+      <h2 class="section-title">Start free. Stay well.</h2>
+      <p class="section-sub" style="margin:0 auto;">7-day free trial on all plans. Cancel anytime from App Store or Google Play.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card standard">
+        <span class="pricing-badge">Monthly</span>
+        <p class="pricing-period">Per month</p>
+        <p class="pricing-price"><span>$</span>9.99</p>
+        <p class="pricing-sub">Billed monthly</p>
+        <a href="https://apps.apple.com/us/app/breatewell/id6756037980" target="_blank" rel="noopener" class="pricing-cta" data-store="apple">Start free 7-day trial</a>
+        <p class="pricing-note">Full access to all features</p>
+      </div>
+      <div class="pricing-card featured">
+        <span class="pricing-badge">Save 33%</span>
+        <p class="pricing-period">Per year</p>
+        <p class="pricing-price"><span>$</span>79.99</p>
+        <p class="pricing-sub">Billed annually · $6.67/mo</p>
+        <a href="https://apps.apple.com/us/app/breatewell/id6756037980" target="_blank" rel="noopener" class="pricing-cta" data-store="apple">Start free 7-day trial</a>
+        <p class="pricing-note" style="color:rgba(255,255,255,0.7);">Best value · Full access</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo"><img src="assets/images/app_icon.png" style="width:28px;height:28px;border-radius:7px;vertical-align:middle;margin-right:8px;" alt=""> BreatheWell</p>
+  <div class="footer-links">
+    <a href="mailto:support@breathwell.io">Contact</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 BreatheWell. All rights reserved.</p>
+</footer>
+
+<script>
+  // ── PLATFORM DETECTION ──
+  // Detect the user's OS and surface only the relevant store link,
+  // hiding or de-emphasising the other one.
+  (function() {
+    const ua = navigator.userAgent || '';
+    const isIOS = /iPhone|iPad|iPod/i.test(ua);
+    const isAndroid = /Android/i.test(ua);
+
+    const APPLE_URL  = 'https://apps.apple.com/us/app/breatewell/id6756037980';
+    const GOOGLE_URL = 'https://play.google.com/store/apps/details?id=com.breathwell.breathwell&pli=1';
+
+    // Update every store-link element based on detected platform
+    document.querySelectorAll('[data-store]').forEach(el => {
+      const store = el.getAttribute('data-store');
+      const isCTA = el.classList.contains('pricing-cta'); // pricing CTAs always show
+
+      if (store === 'apple') {
+        el.href = APPLE_URL;
+        // On Android: redirect CTAs to Google Play; hide badge-style links
+        if (isAndroid) {
+          if (isCTA) { el.href = GOOGLE_URL; }
+          else { el.style.display = 'none'; }
         }
+      } else if (store === 'google') {
+        el.href = GOOGLE_URL;
+        // On iOS: redirect CTAs to App Store; hide badge-style links
+        if (isIOS) {
+          if (isCTA) { el.href = APPLE_URL; }
+          else { el.style.display = 'none'; }
+        }
+      }
+    });
 
-        // Set the manual link
-        document.getElementById('appLink').href = deepLink;
+    // On desktop/unknown platforms show both stores — nothing more to do.
+  })();
 
-        // Try to redirect immediately
-        window.location.href = deepLink;
+  // ── CAROUSEL ──
+  (function() {
+    const imgs = document.querySelectorAll('#carousel-screen img');
+    const dotsWrap = document.getElementById('carousel-dots');
+    let current = 0;
+    let timer;
 
-        // Show manual link after 3 seconds if redirect didn't work
-        setTimeout(() => {
-            document.getElementById('manualLink').style.display = 'block';
-        }, 3000);
+    // Build dots
+    imgs.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Screenshot ' + (i + 1));
+      d.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(d);
+    });
 
-        // Also try opening via a hidden iframe (some platforms prefer this)
-        const iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.src = deepLink;
-        document.body.appendChild(iframe);
+    function goTo(n) {
+      imgs[current].classList.remove('active');
+      dotsWrap.children[current].classList.remove('active');
+      current = (n + imgs.length) % imgs.length;
+      imgs[current].classList.add('active');
+      dotsWrap.children[current].classList.add('active');
+    }
 
-        // Remove iframe after a short delay
-        setTimeout(() => {
-            document.body.removeChild(iframe);
-        }, 1000);
-    </script>
+    function advance() { goTo(current + 1); }
+
+    function startAuto() { timer = setInterval(advance, 3000); }
+    function stopAuto() { clearInterval(timer); }
+
+    document.getElementById('prev-btn').addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
+    document.getElementById('next-btn').addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
+
+    startAuto();
+  })();
+
+  // ── BREATHING DEMO ──
+  (function() {
+    const ring = document.getElementById('breath-ring');
+    const phaseEl = document.getElementById('breath-phase');
+    const counterEl = document.getElementById('breath-counter');
+    const btn = document.getElementById('breath-btn');
+
+    // Box Breathing: inhale 4s, hold 4s, exhale 4s, hold 2s
+    const phases = [
+      { name: 'Inhale', duration: 4, scale: 1.25 },
+      { name: 'Hold',   duration: 4, scale: 1.25 },
+      { name: 'Exhale', duration: 4, scale: 1.0  },
+      { name: 'Hold',   duration: 2, scale: 1.0  },
+    ];
+
+    let running = false;
+    let phaseIndex = 0;
+    let secondsLeft = 0;
+    let ticker = null;
+    let phaseTimer = null;
+
+    function applyPhase(p) {
+      phaseEl.textContent = p.name;
+      ring.style.transform = 'scale(' + p.scale + ')';
+      ring.style.transition = 'transform ' + p.duration + 's ease-in-out';
+    }
+
+    function startPhase(idx) {
+      phaseIndex = idx % phases.length;
+      const p = phases[phaseIndex];
+      secondsLeft = p.duration;
+      counterEl.textContent = secondsLeft;
+      applyPhase(p);
+
+      ticker = setInterval(() => {
+        secondsLeft--;
+        counterEl.textContent = secondsLeft > 0 ? secondsLeft : '';
+        if (secondsLeft <= 0) { clearInterval(ticker); }
+      }, 1000);
+
+      phaseTimer = setTimeout(() => {
+        if (running) startPhase(phaseIndex + 1);
+      }, p.duration * 1000);
+    }
+
+    function stop() {
+      running = false;
+      clearInterval(ticker);
+      clearTimeout(phaseTimer);
+      phaseEl.textContent = 'Ready';
+      counterEl.textContent = '\u00a0';
+      ring.style.transform = 'scale(1)';
+      ring.style.transition = 'transform 0.5s ease';
+      btn.textContent = 'Try it';
+    }
+
+    btn.addEventListener('click', () => {
+      if (running) {
+        stop();
+      } else {
+        running = true;
+        btn.textContent = 'Stop';
+        startPhase(0);
+      }
+    });
+  })();
+</script>
 </body>
 </html>
