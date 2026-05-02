@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breathing App for Nurses: Decompress After Shifts</title>
+  <meta name="description" content="Breathing app for nurses and caregivers. Manage compassion fatigue and shift stress. Try BreatheWell free.">
+  <link rel="canonical" href="https://breathwell.io/breathing-app-for/nurses-and-caregivers">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How can nurses manage stress during shifts?", "acceptedAnswer": {"@type": "Answer", "text": "The 90-second patient reset (5 slow breaths with extended exhale) between patients prevents emotional carry-over and stress accumulation. It takes less time than scrolling your phone and is far more restorative."}}, {"@type": "Question", "name": "What is compassion fatigue?", "acceptedAnswer": {"@type": "Answer", "text": "Compassion fatigue is the emotional and physical exhaustion from caring for others. It affects 70% of healthcare workers and leads to burnout, reduced empathy, and career exit. Breathing exercises help by providing nervous system recovery between stress exposures."}}, {"@type": "Question", "name": "Can breathing help with night shift fatigue?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Light kapalabhati (energizing breath) during breaks provides caffeine-free alertness. Extended exhale breathing before sleep after night shifts helps shift workers fall asleep faster despite circadian disruption."}}, {"@type": "Question", "name": "How much time do nurses need for breathing exercises?", "acceptedAnswer": {"@type": "Answer", "text": "90 seconds between patients (5 slow breaths) and 5 minutes of decompression after each shift. These minimal time investments produce significant reductions in burnout markers and emotional exhaustion."}}]}</script>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--primary:#2D8B75;--primary-light:#3DAAAA;--bg:#F7F5F0;--bg2:#F0EDE6;--text:#2C3340;--text-muted:#6B7280;--card:#FFFDF9;--shadow:0 4px 20px rgba(44,51,64,0.08)}
+    html{scroll-behavior:smooth}
+    body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);line-height:1.7}
+    nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(45,139,117,0.1);padding:0 5%}
+    .nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+    .nav-logo{font-weight:700;font-size:18px;color:var(--text);text-decoration:none}
+    .nav-cta{background:var(--primary);color:#fff;padding:8px 20px;border-radius:24px;text-decoration:none;font-size:14px;font-weight:600;transition:background .2s}
+    .nav-cta:hover{background:var(--primary-light)}
+    main{max-width:760px;margin:0 auto;padding:40px 5% 80px}
+    h1{font-size:clamp(28px,5vw,42px);font-weight:700;line-height:1.2;margin-bottom:20px;color:var(--text)}
+    h2{font-size:clamp(22px,3.5vw,30px);font-weight:600;margin:48px 0 16px;color:var(--text)}
+    h3{font-size:20px;font-weight:600;margin:0 0 10px;color:var(--primary)}
+    p{margin-bottom:16px;color:var(--text-muted)}
+    .intro{font-size:18px;line-height:1.8;color:var(--text);margin-bottom:32px}
+    .technique-card{background:var(--card);border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:var(--shadow);border-left:4px solid var(--primary)}
+    .technique-card ol{padding-left:20px;margin:12px 0}
+    .technique-card li{margin-bottom:8px;color:var(--text)}
+    .when{color:var(--primary);font-size:14px;margin-top:12px;margin-bottom:0}
+    .benefits{background:var(--bg2);border-radius:16px;padding:28px;margin:32px 0}
+    .benefits ul{list-style:none;padding:0}
+    .benefits li{padding:8px 0 8px 28px;position:relative;color:var(--text)}
+    .benefits li::before{content:"\2713";position:absolute;left:0;color:var(--primary);font-weight:700}
+    .cta-section{text-align:center;background:linear-gradient(135deg,rgba(45,139,117,0.08),rgba(61,170,170,0.08));border-radius:20px;padding:40px 28px;margin:40px 0}
+    .cta-section h2{margin-top:0;color:var(--text)}
+    .cta-section p{color:var(--text-muted);max-width:500px;margin:0 auto 24px}
+    .cta-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:30px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .2s,box-shadow .2s}
+    .cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(45,139,117,0.25)}
+    .cta-btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff}
+    .cta-btn-secondary{background:#000;color:#fff}
+    .cta-trial{font-size:13px;color:var(--text-muted);margin-top:12px}
+    .faq-item{border-bottom:1px solid rgba(45,139,117,0.12);padding:20px 0}
+    .faq-item:last-child{border-bottom:none}
+    .faq-item h3{color:var(--text);font-size:18px}
+    .faq-item p{margin-bottom:0}
+    .internal-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px;padding-top:24px;border-top:1px solid var(--bg2)}
+    .internal-links a{background:var(--card);padding:8px 16px;border-radius:20px;font-size:13px;color:var(--primary);text-decoration:none;box-shadow:var(--shadow);transition:background .2s}
+    .internal-links a:hover{background:var(--bg2)}
+    footer{text-align:center;padding:40px 5%;font-size:13px;color:var(--text-muted);background:var(--bg2)}
+    footer a{color:var(--primary);text-decoration:none;margin:0 12px}
+    @media(max-width:600px){main{padding:24px 5% 60px}.technique-card{padding:20px}.cta-section{padding:28px 20px}}
+  </style>
+</head>
+<body>
+  <nav><div class="nav-inner">
+    <a href="https://breathwell.io" class="nav-logo">BreatheWell</a>
+    <a href="https://apps.apple.com/app/breathwell-fell-well/id6740050883" class="nav-cta">Try Free</a>
+  </div></nav>
+
+  <main>
+    <h1>Breathing App for Nurses & Caregivers: Decompress After Every Shift</h1>
+    <div class="intro">You spend all day caring for others. Who cares for you? Nursing and caregiving are among the highest-stress professions — long hours, emotional weight, physical demands, and the constant pressure of responsibility for others' lives. Compassion fatigue isn't weakness; it's the natural cost of caring deeply. BreatheWell gives you micro-recovery tools between patients and a decompression practice after every shift. These aren't luxuries — they're professional necessities, like PPE for your nervous system.</div>
+
+    <h2>How It Works</h2>
+    <p>Compassion fatigue affects 70% of healthcare workers, leading to emotional exhaustion, depersonalization, and reduced efficacy. The mechanism is chronic sympathetic activation without adequate parasympathetic recovery. Nursing involves repeated stress activation (emergencies, suffering, time pressure) without the 'all clear' signal that allows the nervous system to reset. Breathing exercises provide that signal artificially. Research from the Journal of Nursing Management shows 5 minutes of structured breathing between patient interactions reduces emotional exhaustion scores by 35% and improves patient satisfaction scores by 20% — suggesting better care comes from caregivers who care for themselves.</p>
+
+    <h2>Techniques</h2>
+    
+        <div class="technique-card">
+          <h3>1. 90-Second Patient Reset</h3>
+          <ol><li>Between patients, step into hallway or supply room</li>
+<li>Take 5 slow breaths: inhale 3s, exhale 6s</li>
+<li>On the last exhale, mentally release the previous patient's energy</li>
+<li>This prevents emotional carry-over between patients</li>
+<li>Takes 90 seconds — the minimum effective dose</li></ol>
+          <p class="when"><strong>Best for:</strong> Between patient interactions, during shift</p>
+        </div>
+        <div class="technique-card">
+          <h3>2. End-of-Shift Decompression</h3>
+          <ol><li>Before leaving the facility, sit in your car for 5 minutes</li>
+<li>Inhale 4s, exhale 8s — extended exhale pattern</li>
+<li>With each exhale, consciously leave the shift's weight at work</li>
+<li>Follow with 5 cycles of box breathing</li>
+<li>Drive home in a calmer state — don't bring the shift home</li></ol>
+          <p class="when"><strong>Best for:</strong> After every shift, preventing compassion fatigue accumulation</p>
+        </div>
+        <div class="technique-card">
+          <h3>3. Overnight Shift Survival Breathing</h3>
+          <ol><li>During night shift breaks, do 3 minutes of energizing breath</li>
+<li>Short, sharp nasal exhales (kapalabhati light) — 20 pumps</li>
+<li>Rest 30 seconds, repeat 2 rounds</li>
+<li>This resets alertness without caffeine</li>
+<li>Follow with 2 minutes of calming breathing before returning to floor</li></ol>
+          <p class="when"><strong>Best for:</strong> Night shifts, long shifts, maintaining alertness without caffeine</p>
+        </div>
+
+    <div class="benefits">
+      <h2>What to Expect After 30 Days</h2>
+      <ul><li>Compassion fatigue symptoms decrease measurably</li>
+<li>Emotional carry-over between patients stops — better care for everyone</li>
+<li>Sleep after shifts improves as decompression practice takes hold</li>
+<li>Career longevity increases as burnout rate decreases</li>
+<li>Relationships at home improve as work stress stays at work</li></ul>
+    </div>
+
+    <div class="cta-section">
+      <h2>Try It With BreatheWell</h2>
+      <p>BreatheWell understands shift work — quick protocols that fit between patients and decompression routines for after shift. AI voice guidance means zero mental effort required. Start your free 7-day trial.</p>
+      <div class="cta-buttons">
+        <a href="https://play.google.com/store/apps/details?id=com.breathwell.breathwell" class="cta-btn cta-btn-primary">Google Play</a>
+        <a href="https://apps.apple.com/app/breathwell-fell-well/id6740050883" class="cta-btn cta-btn-secondary">App Store</a>
+      </div>
+      <p class="cta-trial">No credit card required &middot; Free 7-day trial</p>
+    </div>
+
+    <h2>Frequently Asked Questions</h2>
+    
+        <div class="faq-item">
+          <h3>How can nurses manage stress during shifts?</h3>
+          <p>The 90-second patient reset (5 slow breaths with extended exhale) between patients prevents emotional carry-over and stress accumulation. It takes less time than scrolling your phone and is far more restorative.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What is compassion fatigue?</h3>
+          <p>Compassion fatigue is the emotional and physical exhaustion from caring for others. It affects 70% of healthcare workers and leads to burnout, reduced empathy, and career exit. Breathing exercises help by providing nervous system recovery between stress exposures.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can breathing help with night shift fatigue?</h3>
+          <p>Yes. Light kapalabhati (energizing breath) during breaks provides caffeine-free alertness. Extended exhale breathing before sleep after night shifts helps shift workers fall asleep faster despite circadian disruption.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How much time do nurses need for breathing exercises?</h3>
+          <p>90 seconds between patients (5 slow breaths) and 5 minutes of decompression after each shift. These minimal time investments produce significant reductions in burnout markers and emotional exhaustion.</p>
+        </div>
+
+    <div class="internal-links">
+      <strong style="width:100%;font-size:14px;margin-bottom:4px">Explore more:</strong>
+      <a href="/breathing-techniques/box-breathing">Box Breathing</a>
+<a href="/breathing-exercises-for/burnout">For Burnout</a>
+<a href="/breathing-exercises-for/stress">For Stress</a>
+<a href="/breathing-exercises-for/sleep">For Sleep</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 BreatheWell. All rights reserved.</p>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/support.html">Support</a>
+  </footer>
+</body>
+</html>
