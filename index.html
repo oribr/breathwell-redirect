@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="BreatheWell — Science-backed breathing exercises, AI voice guidance, and mood tracking in one beautiful app. Start your free 7-day trial today.">
   <meta name="keywords" content="breathing exercises, meditation, mindfulness, mood tracking, stress relief, anxiety relief, wellness, box breathing, 4-7-8, wim hof">
-  <title>BreatheWell — Breathe Better. Feel Better.</title>
+  <title>BreatheWell — Find Calm in Every Breath</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,17 +13,21 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --primary: #6366F1;
-      --grad-start: #667AFF;
-      --grad-end: #60EFFF;
-      --bg-top: #F0F8FF;
-      --bg-mid: #E6F2FF;
-      --bg-bot: #D6E8F7;
-      --dark: #143752;
-      --text-muted: #5a7a95;
+      --primary: #2D8B75;
+      --grad-start: #2D8B75;
+      --grad-end: #3DAAAA;
+      --accent-indigo: #5B6ABF;
+      --bg-top: #F7F5F0;
+      --bg-mid: #F0EDE6;
+      --bg-bot: #E8E4DB;
+      --dark: #2C3340;
+      --text-muted: #6B7280;
       --white: #fff;
-      --card-shadow: 0 4px 24px rgba(20,55,82,0.10);
-      --card-shadow-hover: 0 12px 40px rgba(20,55,82,0.18);
+      --success: #3DAA91;
+      --warning: #E8A838;
+      --danger: #D4574E;
+      --card-shadow: 0 4px 24px rgba(44,51,64,0.10);
+      --card-shadow-hover: 0 12px 40px rgba(44,51,64,0.18);
     }
 
     html { scroll-behavior: smooth; }
@@ -41,9 +45,9 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(240,248,255,0.92);
+      background: rgba(247,245,240,0.92);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(99,102,241,0.12);
+      border-bottom: 1px solid rgba(45,139,117,0.12);
       padding: 0 5%;
     }
     .nav-inner {
@@ -111,6 +115,13 @@
       max-width: 600px;
       margin: 0 auto 36px;
     }
+    .hero-social-proof {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 18px;
+      letter-spacing: 0.02em;
+    }
     .hero-badges { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
     .hero-badge {
       display: inline-flex;
@@ -123,19 +134,24 @@
       text-decoration: none;
       transition: transform 0.2s, box-shadow 0.2s;
     }
-    .hero-badge:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(99,102,241,0.25); }
+    .hero-badge:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(45,139,117,0.25); }
     .hero-badge-apple {
-      background: #000;
+      background: linear-gradient(135deg, #2D8B75, #3DAAAA);
       color: #fff;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      box-shadow: 0 6px 20px rgba(45,139,117,0.30);
     }
     .hero-badge-google {
       background: var(--white);
       color: var(--dark);
       border: 2px solid #dde6f0;
-      box-shadow: 0 6px 20px rgba(20,55,82,0.10);
+      box-shadow: 0 6px 20px rgba(44,51,64,0.10);
     }
     .hero-badge svg { width: 22px; height: 22px; flex-shrink: 0; }
+    .hero-trial-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 16px;
+    }
 
     /* ── SECTION BASE ── */
     section { padding: 80px 5%; }
@@ -146,8 +162,8 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--primary);
-      background: rgba(99,102,241,0.10);
+      color: #2D8B75;
+      background: rgba(45,139,117,0.10);
       padding: 4px 12px;
       border-radius: 20px;
       margin-bottom: 14px;
@@ -180,7 +196,7 @@
       height: 556px;
       background: #111;
       border-radius: 44px;
-      box-shadow: 0 30px 70px rgba(20,55,82,0.30), inset 0 0 0 2px #2a2a2a;
+      box-shadow: 0 30px 70px rgba(44,51,64,0.30), inset 0 0 0 2px #2a2a2a;
       flex-shrink: 0;
     }
     /* Inner screen area — inset to simulate bezels so screenshots sit cleanly */
@@ -227,7 +243,7 @@
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      border: 2px solid rgba(99,102,241,0.25);
+      border: 2px solid rgba(45,139,117,0.25);
       background: var(--white);
       color: var(--primary);
       font-size: 18px;
@@ -243,14 +259,14 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: rgba(99,102,241,0.25);
+      background: rgba(45,139,117,0.25);
       cursor: pointer;
       transition: background 0.2s, transform 0.2s;
     }
     .carousel-dot.active { background: var(--primary); transform: scale(1.3); }
 
     /* ── BREATHING DEMO ── */
-    .demo-section { background: linear-gradient(135deg, #F0F4FF, #E8F0FF); }
+    .demo-section { background: linear-gradient(135deg, #F5F3EE, #EDE9E0); }
     .demo-wrap {
       display: flex;
       flex-direction: column;
@@ -274,7 +290,7 @@
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      background: linear-gradient(135deg, #F0F4FF, #E8F0FF);
+      background: linear-gradient(135deg, #F5F3EE, #EDE9E0);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -301,12 +317,12 @@
       font-size: 16px;
       font-weight: 600;
       cursor: pointer;
-      background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+      background: linear-gradient(135deg, #2D8B75, #3DAAAA);
       color: #fff;
-      box-shadow: 0 6px 20px rgba(102,122,255,0.35);
+      box-shadow: 0 6px 20px rgba(45,139,117,0.35);
       transition: transform 0.2s, box-shadow 0.2s;
     }
-    .breath-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(102,122,255,0.45); }
+    .breath-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(45,139,117,0.45); }
     .breath-description { font-size: 14px; color: var(--text-muted); text-align: center; max-width: 320px; }
 
     /* ── FEATURES ── */
@@ -317,12 +333,12 @@
       gap: 24px;
     }
     .feature-card {
-      background: linear-gradient(135deg, #F8FAFF, #F0F6FF);
+      background: linear-gradient(135deg, #FAF9F6, #F5F3EE);
       border-radius: 20px;
       padding: 32px 28px;
       box-shadow: var(--card-shadow);
       transition: transform 0.2s, box-shadow 0.2s;
-      border: 1px solid rgba(99,102,241,0.08);
+      border: 1px solid rgba(45,139,117,0.08);
     }
     .feature-card:hover { transform: translateY(-6px); box-shadow: var(--card-shadow-hover); }
     .feature-icon { font-size: 44px; margin-bottom: 16px; display: block; }
@@ -367,12 +383,12 @@
       overflow: hidden;
     }
     .pricing-card:hover { transform: translateY(-6px); box-shadow: var(--card-shadow-hover); }
-    .pricing-card.standard { background: #F8FAFF; border-color: #dde6f0; }
+    .pricing-card.standard { background: #FAF9F6; border-color: #dde6f0; }
     .pricing-card.featured {
-      background: linear-gradient(135deg, #667AFF, #60EFFF);
+      background: linear-gradient(135deg, #2D8B75, #3DAAAA);
       color: #fff;
       border-color: transparent;
-      box-shadow: 0 12px 40px rgba(102,122,255,0.35);
+      box-shadow: 0 12px 40px rgba(45,139,117,0.35);
     }
     .pricing-badge {
       position: absolute;
@@ -387,7 +403,7 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
     }
-    .pricing-card.standard .pricing-badge { background: rgba(99,102,241,0.12); color: var(--primary); }
+    .pricing-card.standard .pricing-badge { background: rgba(45,139,117,0.12); color: var(--primary); }
     .pricing-period { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.75; margin-bottom: 8px; }
     .pricing-price { font-size: 44px; font-weight: 800; line-height: 1; margin-bottom: 4px; }
     .pricing-price span { font-size: 18px; font-weight: 600; vertical-align: super; }
@@ -405,7 +421,7 @@
     .pricing-card.standard .pricing-cta {
       background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
       color: #fff;
-      box-shadow: 0 6px 18px rgba(102,122,255,0.30);
+      box-shadow: 0 6px 18px rgba(45,139,117,0.30);
     }
     .pricing-card.featured .pricing-cta { background: rgba(255,255,255,0.95); color: var(--primary); }
     .pricing-cta:hover { transform: scale(1.03); }
@@ -413,7 +429,7 @@
 
     /* ── FOOTER ── */
     footer {
-      background: var(--dark);
+      background: #1A1F26;
       color: rgba(255,255,255,0.7);
       text-align: center;
       padding: 40px 5%;
@@ -459,18 +475,20 @@
 <!-- HERO -->
 <section style="padding-top:0; padding-bottom:0; background:none;">
   <div class="hero">
-    <h1>Breathe Better.<br>Feel Better.</h1>
-    <p>Science-backed breathing exercises, AI voice guidance, and mood tracking &mdash; in one beautiful app.</p>
+    <h1>Find Calm in<br>Every Breath</h1>
+    <p>Science-backed breathing exercises with AI voice guidance and mood tracking &mdash; your personal wellness companion. Start free today.</p>
+    <p class="hero-social-proof">Join thousands finding calm</p>
     <div class="hero-badges">
       <a href="https://apps.apple.com/us/app/breatewell/id6756037980" target="_blank" rel="noopener" class="hero-badge hero-badge-apple" data-store="apple">
         <svg viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        Download on the App Store
+        Start Breathing Free
       </a>
       <a href="https://play.google.com/store/apps/details?id=com.breathwell.breathwell&pli=1" target="_blank" rel="noopener" class="hero-badge hero-badge-google" data-store="google">
         <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#4285F4" d="M3.18 23.6c.36.2.77.22 1.16.07l12.19-7.03-2.65-2.66L3.18 23.6z"/><path fill="#EA4335" d="M20.82 10.09c-.35-.76-1.07-1.3-1.93-1.3H4.34c-.86 0-1.58.54-1.93 1.3L12 15.17l8.82-5.08z"/><path fill="#34A853" d="M3.18.4C3.07.62 3 .86 3 1.13v21.74c0 .27.07.51.18.73l10.65-11.25L3.18.4z"/><path fill="#FBBC05" d="M20.82 13.91L18.69 12.7 16.05 14l2.64 2.64 2.13-1.21c.59-.34.94-.96.94-1.63-.01-.67-.36-1.29-.94-1.89z"/></svg>
         Get it on Google Play
       </a>
     </div>
+    <p class="hero-trial-note">No credit card required &bull; Free 7-day trial</p>
   </div>
 </section>
 
@@ -537,23 +555,23 @@
     <div class="features-grid">
       <div class="feature-card">
         <span class="feature-icon">🌬️</span>
-        <h3>Guided Breathing</h3>
-        <p>18+ scientifically-proven breathing protocols — from Box Breathing to Wim Hof — each with real-time visual guidance.</p>
+        <h3>Let AI Guide Your Breathing</h3>
+        <p>Close your eyes and let our AI voice coach you through every inhale, hold, and exhale — so you can focus on feeling better, not counting seconds.</p>
       </div>
       <div class="feature-card">
         <span class="feature-icon">🎙️</span>
-        <h3>AI Voice Guidance</h3>
-        <p>Personalized voice meditation generated uniquely for each session, with calming music and soothing visualizations.</p>
+        <h3>A Technique for Every Moment</h3>
+        <p>Whether you need to calm anxiety, fall asleep faster, or boost energy — choose from 20+ scientifically-proven breathing protocols tailored to your needs.</p>
       </div>
       <div class="feature-card">
         <span class="feature-icon">📊</span>
-        <h3>Mood Tracking</h3>
-        <p>Track your emotional states with intuitive sliders and beautiful analytics that reveal patterns over time.</p>
+        <h3>Track How You Feel, See How You Grow</h3>
+        <p>Log your mood before and after each session with intuitive sliders. Watch your emotional patterns unfold in beautiful analytics over days and weeks.</p>
       </div>
       <div class="feature-card">
         <span class="feature-icon">🤖</span>
-        <h3>AI Insights</h3>
-        <p>Personalized wellness reports that analyze your mood trends and provide actionable, research-backed guidance.</p>
+        <h3>AI-Powered Insights Into Your Wellbeing</h3>
+        <p>Receive personalized wellness reports that analyze your mood trends, identify triggers, and offer actionable, research-backed guidance just for you.</p>
       </div>
       <div class="feature-card">
         <span class="feature-icon">🎵</span>
